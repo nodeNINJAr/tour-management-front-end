@@ -15,8 +15,8 @@ import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Password from "@/components/ui/Password";
-// import { useRegisterMutation } from "@/redux/features/auth/auth.api";
-// // import { toast } from "sonner";
+import { useRegisterMutation } from "@/redux/features/auth/auth.api";
+
 
 const registerSchema = z
   .object({
@@ -60,7 +60,7 @@ export function RegisterForm({
       email: data.email,
       password: data.password,
     };
-
+    console.log(onsubmit);
     try {
       const result = await register(userInfo).unwrap();
       console.log(result);
