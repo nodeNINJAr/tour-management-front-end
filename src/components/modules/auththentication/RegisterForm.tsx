@@ -60,7 +60,7 @@ export function RegisterForm({
       email: data.email,
       password: data.password,
     };
-    console.log(onsubmit);
+    console.log(userInfo);
     try {
       const result = await register(userInfo).unwrap();
       console.log(result);

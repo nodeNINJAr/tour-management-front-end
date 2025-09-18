@@ -1,6 +1,7 @@
+import { axiosInstance } from "@/lib/axios"
 import { type BaseQueryFn } from "@reduxjs/toolkit/query"
 import type { AxiosError, AxiosRequestConfig } from "axios"
-import axios from "axios"
+
 
 
 const axiosBaseQuery =
@@ -18,8 +19,9 @@ const axiosBaseQuery =
     unknown
   > =>
   async ({ url, method, data, params, headers }) => {
+    console.log(url,baseUrl);
     try {
-      const result = await axios({
+      const result = await axiosInstance({
         url: baseUrl + url,
         method,
         data,
@@ -40,17 +42,3 @@ const axiosBaseQuery =
 
 export default axiosBaseQuery;
 
-
-// const api = createApi({
-//   baseQuery: axiosBaseQuery({
-//     baseUrl: 'https://example.com',
-//   }),
-//   endpoints(build) {
-//     return {
-//       query: build.query({ query: () => ({ url: '/query', method: 'get' }) }),
-//       mutation: build.mutation({
-//         query: () => ({ url: '/mutation', method: 'post' }),
-//       }),
-//     }
-//   },
-// })

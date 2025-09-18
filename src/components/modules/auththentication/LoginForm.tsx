@@ -1,3 +1,4 @@
+import config from "@/components/config";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -26,6 +27,7 @@ export function LoginForm({
   const [login] = useLoginMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log(data);
+    console.log(config.baseUrl);
     try {
       const res = await login(data).unwrap();
       console.log(res);
