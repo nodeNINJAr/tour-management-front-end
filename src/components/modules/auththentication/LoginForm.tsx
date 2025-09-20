@@ -33,11 +33,21 @@ export function LoginForm({
       console.log(res);
     } catch (err) {
       console.error(err);
-
-      if (err.status === 401) {
+      // 
+      if(err.data.message === "Password does not match"){
+           toast.error("Password does not match");
+      }
+        // 
+      if(err.data.message === "User does not exist"){
+           toast.error("User does not exist");
+      }
+      // 
+      if (err.data.message === "User is not verified") {
         toast.error("Your account is not verified");
         navigate("/verify", { state: data.email });
       }
+
+
     }
   };
 
