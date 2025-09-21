@@ -31,6 +31,7 @@ export function LoginForm({
     try {
       const res = await login(data).unwrap();
       console.log(res);
+      navigate("/");
     } catch (err) {
       console.error(err);
       // 
@@ -99,7 +100,7 @@ export function LoginForm({
               )}
             />
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" variant="outline">
               Login
             </Button>
           </form>
@@ -112,6 +113,7 @@ export function LoginForm({
         </div>
 
         <Button
+          onClick={()=>window.open(`${config.baseUrl}/auth/google`)}
           type="button"
           variant="outline"
           className="w-full cursor-pointer"
